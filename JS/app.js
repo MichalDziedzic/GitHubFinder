@@ -8,7 +8,20 @@ searchUser.addEventListener('keyup',(e)=>{
     if(userText!=='')
     {
         github.getUser(userText)
-            .then(data=>console.log(data))
+            .then(data=>{
+                if(data.profile.message==='Not Found')
+                {
+
+                }else
+                {
+                    const ui=new UI;
+                    ui.showProfile(data.profile);
+                }
+
+            })
             .catch(err=>console.log(err))
+    }else
+    {
+        //clear user profile
     }
 })
