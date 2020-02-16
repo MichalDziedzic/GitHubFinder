@@ -3,6 +3,7 @@ class UI{
     constructor()
     {
         this.profile=document.querySelector('#profile');
+        this.searchContainer=document.querySelector('.searchContainer');
     }
     showProfile(user)
     {
@@ -32,4 +33,32 @@ class UI{
         <div id="repos"></div>
         `;
     }
+    clearProfile()
+    {
+        this.profile.innerHTML='';
+    }
+    clearAlert()
+    {
+        const CurrentAlert=document.querySelector('.alert');
+
+        if(CurrentAlert)
+        {
+            CurrentAlert.remove();
+        }
+    }
+    showAlert(message,className)
+    {
+        this.clearAlert();
+        const div=document.createElement('div');
+        div.className=className;
+        div.appendChild(document.createTextNode(message));
+        const search=document.querySelector('.search');
+        this.searchContainer.insertBefore(div,search);
+        
+        setTimeout(()=>{
+            this.clearAlert()
+        },3000)
+
+    }
+    
 }
